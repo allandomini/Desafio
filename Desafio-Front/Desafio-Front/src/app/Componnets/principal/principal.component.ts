@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProspectService } from '../../service/prospect.service';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { ProspectListComponent } from '../prospect-list/prospect-list.component';
 
 @Component({
   selector: 'app-principal',
@@ -15,6 +16,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     HttpClientModule,
     RouterOutlet,
     RouterLink,
+    ProspectListComponent,
   ],
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.scss'],
@@ -34,10 +36,10 @@ export class PrincipalComponent implements OnInit {
   ClientView: boolean = false;
   prospectView: boolean = true;
   searchView: boolean = false;
+  DiagnosticTable: boolean = false;
   // JSON de Prospects
   prospects: Prospect[] = [];
   filteredProspects: Prospect[] = [];
-
   // Campo de busca
   searchTerm: string = '';
 
@@ -51,11 +53,19 @@ export class PrincipalComponent implements OnInit {
     this.ClientView = true;
     this.prospectView = false;
     this.searchView = false;
+    this.DiagnosticTable = false;
   }
   mostrarProspects(): void {
     this.ClientView = false;
     this.prospectView = true;
     this.searchView = false;
+    this.DiagnosticTable = false;
+  }
+  mostrarDiagnostico() {
+    this.ClientView = false;
+    this.prospectView = false;
+    this.searchView = false;
+    this.DiagnosticTable = true;
   }
 
   //construtor
