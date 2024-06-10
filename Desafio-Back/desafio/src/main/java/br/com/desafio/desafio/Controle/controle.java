@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@CrossOrigin(origins = "*")
 public class controle {
  
     @Autowired
     private repositorio acao;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/")
     public Prospect cadastrar(@RequestBody Prospect p ){
         return acao.save(p);
