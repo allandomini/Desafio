@@ -4,16 +4,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProspectService } from '../../service/prospect.service';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    RouterOutlet,
+    RouterLink,
+  ],
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.scss'],
   providers: [DatePipe],
 })
 export class PrincipalComponent implements OnInit {
+  //TITULO DA PAGINA
+  title = 'Dashboard';
   //Objeto do tipo Prospect
   prospect = new Prospect();
   //visibilidade CadastroProspect
